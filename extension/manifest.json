@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Nickets Data Reporter",
+  "version": "1.0",
+  "description": "Reports queue positions and purchase data to Nickets Data Center",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "alarms",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://*.ticketmaster.com/*",
+    "*://*.livenation.com/*",
+    "*://queue.ticketmaster.com/*",
+    "*://*.queue-it.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.ticketmaster.com/*",
+        "*://*.livenation.com/*",
+        "*://*.queue-it.net/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

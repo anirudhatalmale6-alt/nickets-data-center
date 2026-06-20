@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:320px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#e1e4e8;padding:16px}
+h2{font-size:15px;color:#d29922;margin-bottom:12px}h2 span{color:#58a6ff}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:11px;color:#8b949e;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.field input{width:100%;padding:7px 10px;background:#161b22;border:1px solid #30363d;border-radius:6px;color:#e6edf3;font-size:13px}
+.field input:focus{outline:none;border-color:#58a6ff}
+.toggle{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #21262d}
+.toggle span{font-size:12px;color:#e1e4e8}
+.switch{position:relative;width:36px;height:20px}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#30363d;border-radius:10px;transition:.3s}
+.slider:before{content:"";position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#8b949e;border-radius:50%;transition:.3s}
+.switch input:checked+.slider{background:#238636}
+.switch input:checked+.slider:before{transform:translateX(16px);background:#fff}
+.btn{width:100%;padding:8px;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;margin-top:8px}
+.btn-save{background:#238636;color:#fff}.btn-save:hover{background:#2ea043}
+.btn-dash{background:#161b22;color:#58a6ff;border:1px solid #30363d}.btn-dash:hover{background:#1c2128}
+.status{margin-top:8px;font-size:11px;color:#3fb950;text-align:center;min-height:16px}
+.status.err{color:#f85149}
+.divider{border:none;border-top:1px solid #21262d;margin:12px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.stat{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:8px;text-align:center}
+.stat .val{font-size:18px;font-weight:700;color:#58a6ff}.stat .lbl{font-size:10px;color:#8b949e;margin-top:2px}
+</style>
+</head>
+<body>
+<h2><span>Nickets</span> Data Reporter</h2>
+
+<div class="stats">
+    <div class="stat"><div class="val" id="stat-queue">-</div><div class="lbl">Queue Reports</div></div>
+    <div class="stat"><div class="val" id="stat-purchase">-</div><div class="lbl">Purchases</div></div>
+</div>
+
+<div class="field">
+    <label>API Server URL</label>
+    <input type="text" id="api-url" placeholder="http://127.0.0.1:7890">
+</div>
+<div class="field">
+    <label>API Key</label>
+    <input type="password" id="api-key" placeholder="API key...">
+</div>
+<div class="field">
+    <label>Profile ID</label>
+    <input type="text" id="profile-id" placeholder="Profile identifier...">
+</div>
+<div class="field">
+    <label>VA Name</label>
+    <input type="text" id="va-name" placeholder="Your VA name...">
+</div>
+
+<hr class="divider">
+
+<div class="toggle">
+    <span>Reporting Enabled</span>
+    <label class="switch"><input type="checkbox" id="toggle-enabled" checked><span class="slider"></span></label>
+</div>
+<div class="toggle">
+    <span>Report Queue Positions</span>
+    <label class="switch"><input type="checkbox" id="toggle-queue" checked><span class="slider"></span></label>
+</div>
+<div class="toggle">
+    <span>Report Purchases</span>
+    <label class="switch"><input type="checkbox" id="toggle-purchases" checked><span class="slider"></span></label>
+</div>
+
+<button class="btn btn-save" id="btn-save">Save Settings</button>
+<button class="btn btn-dash" id="btn-dash">Open Dashboard</button>
+<div class="status" id="status"></div>
+
+<script src="popup.js"></script>
+</body>
+</html>
