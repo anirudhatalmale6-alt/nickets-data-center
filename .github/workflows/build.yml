@@ -1,0 +1,35 @@
+name: Build Windows EXE
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install flask pyinstaller
+
+      - name: Build EXE
+        run: |
+          pyinstaller --onefile --name NicketsDataCenter --console --hidden-import flask app.py
+
+      - name: Zip extension
+        run: Compress-Archive -Path extension\* -DestinationPath dist\NicketsDataReporter.zip
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/NicketsDataCenter.exe
+            dist/NicketsDataReporter.zip
+          generate_release_notes: true
