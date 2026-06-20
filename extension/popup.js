@@ -1,7 +1,7 @@
 // Nickets Data Reporter - Popup UI
 
 var defaults = {
-    api_url: 'http://127.0.0.1:7890',
+    api_url: 'https://nickets.xyz/dashboard',
     api_key: 'nk$d4t4#2026!',
     va_name: '',
     profile_id: '',

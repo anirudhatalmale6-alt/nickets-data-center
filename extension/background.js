@@ -1,7 +1,7 @@
 // Nickets Data Reporter - Background Service Worker
 // Receives queue/purchase events from content scripts and sends to Data Center API
 
-const DEFAULT_API_URL = 'http://127.0.0.1:7890';
+const DEFAULT_API_URL = 'https://nickets.xyz/dashboard';
 const DEFAULT_API_KEY = 'nk$d4t4#2026!';
 
 let config = {

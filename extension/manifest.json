@@ -14,7 +14,8 @@
     "*://*.ticketmaster.com/*",
     "*://*.livenation.com/*",
     "*://queue.ticketmaster.com/*",
-    "*://*.queue-it.net/*"
+    "*://*.queue-it.net/*",
+    "*://nickets.xyz/*"
   ],
   "background": {
     "service_worker": "background.js"

@@ -696,7 +696,7 @@ tr:hover{background:#1c2128}
 
 </div>
 <script>
-const BASE = location.origin;
+const BASE = (location.pathname.match(/^\/[^\/]+/) || [''])[0];
 function api(path, params) {
     let url = BASE + path;
     if (params) url += '?' + new URLSearchParams(params).toString();
